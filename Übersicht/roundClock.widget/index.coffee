@@ -31,7 +31,7 @@ render: (output) -> """
 </svg>
 
 <div id="digits">
-  <span id="hr-dig"></span><span id="min-dig"></span><span id="ampm"></span><div id="sec-dig"></div>
+  <span id="hr-dig"></span><span id="sign">:</span><span id="min-dig"></span><span id="ampm"></span><div id="sec-dig"></div>
 </div>
 """
 
@@ -69,11 +69,23 @@ style: """
   /* -- override -- */
   left: 20px !important
   top: 20px !important
-  scale = 1.5
-  main = #ffff99
-  second = #3f3
-  background = rgba(0,0,0, 0.5)
-  box-shadow: 0 0 20px rgba(255,255,200,0.5)
+  scale = 1
+  main = rgba(236, 240, 241, 1)
+  orange = rgba(231, 76, 60, 1)
+  blue = rgba(52, 152, 219, 1)
+  blue_dark = rgba(41, 128, 185, 1)
+  dark = rgba(44, 62, 80, 1)
+
+  background = dark
+  hour_hand = blue_dark
+  second_hand = blue
+  min_fill = orange
+  time_text = orange
+  second_text = main
+  box-shadow: 0 0 15px #000;
+
+  text_font = "Aldrich"
+  text_size = 55px
   /* -- override -- */
 
   /* Styles (mod if you want) */
@@ -96,10 +108,10 @@ style: """
     height: 215px * scale
 
   #hr-mk polygon
-    fill: main
+    fill: hour_hand
   #sec-mk polygon
     if #{appearance.secHand}
-      fill: second
+      fill: second_hand
     else
       fill: none
   .line
@@ -108,7 +120,7 @@ style: """
     if transitions
       -webkit-transition: -webkit-transform .25s cubic-bezier(0.175, 0.885, 0.32, 1.275)    // this bezier gives the tick a natural bounce
   #min-ln
-    stroke: main
+    stroke: min_fill
     fill: none
 
     stroke-dasharray: PI*2*100
@@ -121,30 +133,32 @@ style: """
     position: absolute
     left:     50%
     top:      50%
-    margin-left: -107.5px * scale
-    margin-top: -38px * scale
+    margin-left: -105px * scale
+    margin-top: -30px * scale
     width:    215px * scale
 
-    font-family: HelveticaNeue
-    font-size: 72px * scale
+    font-family: text_font
+    font-size: text_size * scale
     line-height: 1
     text-align: center
     -webkit-font-smoothing: antialiased    // the transparent bg makes subpixel look bad
-    color: main
+    color: time_text
+
   #hr-dig
-    font-family: HelveticaNeue-Bold
-    letter-spacing: -3px * scale
-    margin-right: 3px * scale
+    font-family: text_font
+    letter-spacing: 0px * scale
+  #sign
+  	padding-bottom: 50px
   #min-dig
-    font-size: 48px * scale
-    letter-spacing: -2px * scale
+    font-family: text_font
+    letter-spacing: 0px * scale
   #ampm
-    font-family: HelveticaNeue-Light
+    font-family: text_font
     font-size: 25px * scale
     margin-left: 3px * scale
   #sec-dig
-    font-family: HelveticaNeue-Light
-    font-size: 24px * scale
-    color: second
+    font-family: text_font
+    font-size: 30px * scale
+    color: second_text
 """
 
