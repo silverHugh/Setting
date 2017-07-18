@@ -85,7 +85,7 @@ style: """
   box-shadow: 0 0 15px #000;
 
   text_font = "Aldrich"
-  text_size = 55px
+  text_size = 50px
   /* -- override -- */
 
   /* Styles (mod if you want) */
