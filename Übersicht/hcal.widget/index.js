@@ -20,8 +20,8 @@ render: function (output) {
 },
  
 style: "                              \n\
-  bottom: 20px                        \n\
-  left: 20px                          \n\
+  top: 20px                        \n\
+  right: 20px                          \n\
   font-family: Helvetica Neue         \n\
   font-size: 11px                     \n\
   font-weight: 500                    \n\
